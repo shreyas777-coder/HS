@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Surprise</title>
+
+<style>
+body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background: linear-gradient(to right, #ff4b4b, #ff0000);
+    color:white;
+    text-align:center;
+}
+
+#yesBtn{
+    padding:15px 30px;
+    font-size:18px;
+    margin:10px;
+    background-color:#28a745;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#noBtn{
+    position:absolute;
+    padding:15px 30px;
+    font-size:18px;
+    background-color:#dc3545;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#result{
+    display:none;
+    margin-top:20px;
+    font-size:28px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h2 id="message">Do you like me Harshada? ❤️</h2>
+
+<button id="yesBtn">I Like you Shreyaa</button>
+<button id="noBtn">I wanna enjoy more as friends</button>
+
+<!--
+<p id="result">
+    WELCOME Capuchino
+</p>
+-->
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+function moveButton() {
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+
+document.getElementById("yesBtn").addEventListener("click", function() {
+
+    document.getElementById("message").innerHTML =
+        "💜Just as the Sun brings light to the world, you bring warmth to my heart 💜";
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("yesBtn").style.display = "none";
+    document.getElementById("noBtn").style.display = "none";
+});
+</script>
+
+</body>
+</html>
