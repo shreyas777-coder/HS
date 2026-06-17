@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do You Like Me?</title>
+
+<style>
+body{
+    background-color:red;
+    color:white;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+img{
+    width:300px;
+    max-width:80%;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+#secondImage{
+    display:none;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#yesBtn{
+    background-color:#28a745;
+    color:white;
+}
+
+#noBtn{
+    background-color:#dc3545;
+    color:white;
+    position:absolute;
+}
+
+#buttons{
+    position:relative;
+}
+</style>
+</head>
+
+<body>
+
+<h2 id="message">Do you like me? ❤️</h2>
+
+<img id="firstImage" src="image1.jpg" alt="First Image">
+
+<img id="secondImage"
+     src="image2.jpg"
+     alt="Second Image"
+     style="display:none;border:3px solid yellow;">
+
+<div id="buttons">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 🙈</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+// Move the No button whenever mouse gets near it
+function moveButton() {
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+
+// When Yes is clicked
+document.getElementById("yesBtn").addEventListener("click", function () {
+
+    document.getElementById("firstImage").style.display = "none";
+    document.getElementById("secondImage").style.display = "block";
+
+    document.getElementById("message").innerHTML =
+        "Yay! ❤️ I knew it! 😊";
+
+    document.getElementById("yesBtn").style.display = "none";
+    document.getElementById("noBtn").style.display = "none";
+});
+</script>
+
+</body>
+</html>
